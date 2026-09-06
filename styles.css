@@ -1,0 +1,131 @@
+:root{
+  --bg:#050505;
+  --panel:#0a0a0a;
+  --panel2:#0e0e0e;
+  --line:#202020;
+  --text:#efefef;
+  --muted:#707070;
+  --neon:#00f5c8;
+  --danger:#ff3f55;
+  --radius:3px;
+  font-family:Arial,Helvetica,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#050505;color:var(--text)}
+body{overflow-x:hidden}
+.bg-grid{position:fixed;inset:0;pointer-events:none;opacity:.28;background-image:linear-gradient(#111 1px,transparent 1px),linear-gradient(90deg,#111 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 90%)}
+main{position:relative;z-index:1}
+.topbar{position:fixed;z-index:20;left:0;right:0;top:0;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid #171717;background:rgba(4,4,4,.82);backdrop-filter:blur(10px)}
+.brand-mini{font-size:12px;letter-spacing:4px;font-weight:800}
+.top-actions{display:flex;gap:18px;align-items:center;color:#888;font-size:10px;letter-spacing:2px}
+.screen{min-height:100vh;padding:100px 6% 70px}
+.hidden{display:none!important}
+.landing{display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column}
+.hero{max-width:900px}
+.eyebrow{font-size:10px;letter-spacing:5px;color:#555;margin-bottom:25px}
+.hero h1{font-size:clamp(42px,8vw,90px);letter-spacing:12px;margin:0;font-weight:900;line-height:1}
+.hero h1 span{font-weight:300}
+.hero p{color:#555;letter-spacing:6px;font-size:11px;margin:24px 0 35px}
+.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer}
+.neon-btn,.outline-btn,.ghost-btn{border:1px solid #282828;background:#111;color:#eee;padding:13px 24px;font-size:10px;font-weight:800;letter-spacing:2px;transition:.2s}
+.neon-btn{background:#00dcb5;color:#00130f;border-color:#00f5c8;box-shadow:0 0 18px rgba(0,245,200,.22)}
+.neon-btn:hover{box-shadow:0 0 28px rgba(0,245,200,.5);transform:translateY(-1px)}
+.outline-btn:hover,.ghost-btn:hover{border-color:#666;background:#191919}
+.wide{width:100%}
+.scroll-note{position:absolute;bottom:35px;font-size:9px;letter-spacing:4px;color:#333}
+.auth-screen{display:flex;align-items:center;justify-content:center}
+.auth-card{width:min(430px,100%);background:rgba(8,8,8,.92);border:1px solid #202020;padding:34px;box-shadow:0 20px 80px rgba(0,0,0,.45)}
+.auth-card h2,.small-modal h2{font-size:14px;letter-spacing:1px;margin:8px 0 25px}
+.card-kicker,.small-label{color:#00a98d;font-size:9px;letter-spacing:2px}
+label{display:block;font-size:8px;letter-spacing:1.5px;color:#777;margin:14px 0}
+input,select{width:100%;border:0;border-bottom:1px solid #222;background:transparent;color:#ddd;padding:12px 2px;outline:0;font-size:12px}
+input:focus{border-color:#00bfa5}
+select{background:#090909}
+.text-btn{border:0;background:none;color:#666;font-size:9px;letter-spacing:2px;padding:14px 0}
+.text-btn:hover{color:#ddd}
+.backBtn{display:block}
+.hint{font-size:9px;color:#444;margin-top:20px}
+.form-msg{font-size:9px;min-height:16px;margin-top:10px;color:#00c7a5;letter-spacing:.5px}
+.form-msg.error{color:#ff5668}
+.dashboard{max-width:1400px;margin:auto}
+.dash-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}
+.dash-head h2{font-size:25px;letter-spacing:4px;margin:7px 0 0}
+.stats-row,.admin-stat{display:flex;gap:28px;text-align:right}
+.stats-row div,.admin-stat{display:flex;flex-direction:column}
+.stats-row strong,.admin-stat strong{font-size:24px}
+.stats-row span,.admin-stat span{font-size:8px;color:#555;letter-spacing:2px;margin-top:4px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tab{border:1px solid #202020;background:#0b0b0b;color:#666;padding:9px 26px;font-size:9px;letter-spacing:2px}
+.tab.active{background:var(--neon);color:#00130f;border-color:var(--neon);box-shadow:0 0 15px rgba(0,245,200,.25)}
+.toolbar{display:flex;gap:10px;margin-bottom:20px}
+.toolbar input{border:1px solid #1b1b1b;padding:12px;background:#090909}
+.toolbar select{border:1px solid #1b1b1b;padding:12px;width:210px}
+.vehicle-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.vehicle-card{border:1px solid #1b1b1b;background:#090909;transition:.2s;overflow:hidden}
+.vehicle-card:hover{border-color:#3b3b3b;transform:translateY(-2px)}
+.vehicle-img{height:190px;background:#111;overflow:hidden;position:relative}
+.vehicle-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.75) contrast(1.05)}
+.price-tag{position:absolute;left:10px;bottom:10px;background:#00f5c8;color:#00130f;padding:6px 9px;font-size:11px;font-weight:900}
+.vehicle-body{padding:16px}
+.vehicle-name{font-weight:800;font-size:13px;letter-spacing:.5px}
+.vehicle-meta{font-size:8px;color:#666;letter-spacing:1.3px;margin-top:8px}
+.status{font-size:8px;letter-spacing:1px;color:#00c7a5;float:right}
+.vehicle-body .outline-btn{margin-top:15px;width:100%;padding:10px}
+.panel{background:#090909;border:1px solid #1b1b1b;padding:20px}
+.history-panel{margin-top:20px}
+.panel-title{font-size:9px;letter-spacing:2px;font-weight:800;margin-bottom:15px}
+.history-item{border-top:1px solid #171717;padding:12px 0;display:flex;justify-content:space-between;gap:15px;font-size:9px;color:#777}
+.history-item strong{color:#ddd;display:block;margin-bottom:4px}
+.history-item .amount{color:#00c7a5}
+.admin-layout{display:grid;grid-template-columns:1.4fr .9fr;gap:15px}
+.table-wrap{overflow:auto;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:9px}
+th,td{text-align:left;padding:12px 7px;border-bottom:1px solid #171717}
+th{color:#555;font-size:8px;letter-spacing:1.5px}
+td{color:#aaa}
+.table-actions{display:flex;gap:5px}
+.mini-btn{border:1px solid #252525;background:#101010;color:#aaa;padding:6px 8px;font-size:8px}
+.mini-btn.delete{color:#ff5264}
+.modal{position:fixed;z-index:50;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-card{position:relative;background:#080808;border:1px solid #242424;box-shadow:0 25px 100px #000;max-width:900px;width:100%}
+.vehicle-modal{display:grid;grid-template-columns:1fr 1fr}
+.modal-image-wrap{min-height:520px;position:relative;background:#111}
+.modal-image-wrap img{width:100%;height:100%;object-fit:cover}
+.modal-price{position:absolute;left:15px;bottom:15px;background:#00f5c8;color:#00130f;font-weight:900;font-size:20px;padding:9px 12px}
+.modal-info{padding:35px}
+.modal-info h2{font-size:22px;letter-spacing:1px;margin:8px 0 22px}
+.close-btn{position:absolute;right:14px;top:10px;z-index:3;border:0;background:transparent;color:#999;font-size:25px}
+.close-btn:hover{color:#fff}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px}
+.spec{border:1px solid #181818;padding:12px}
+.spec span{display:block;color:#555;font-size:7px;letter-spacing:1px;margin-bottom:5px}
+.spec strong{font-size:10px;color:#ddd}
+.booking-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.total-box{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #222;border-bottom:1px solid #222;margin:20px 0;padding:13px 0}
+.total-box span{font-size:8px;color:#555;letter-spacing:1px}
+.total-box strong{font-size:18px;color:#00f5c8}
+.small-modal{max-width:500px;padding:34px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toast{position:fixed;z-index:100;right:20px;bottom:20px;background:#00f5c8;color:#00130f;padding:13px 18px;font-size:10px;font-weight:900;letter-spacing:1px;transform:translateY(100px);opacity:0;transition:.3s}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:850px){
+  .vehicle-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .admin-layout{grid-template-columns:1fr}
+  .vehicle-modal{grid-template-columns:1fr}
+  .modal-image-wrap{min-height:260px;max-height:300px}
+}
+@media(max-width:560px){
+  .screen{padding:90px 18px 50px}
+  .topbar{padding:0 18px}
+  .brand-mini{font-size:9px;letter-spacing:2px}
+  .hero h1{letter-spacing:5px;font-size:42px}
+  .hero p{letter-spacing:3px}
+  .vehicle-grid{grid-template-columns:1fr}
+  .toolbar{flex-direction:column}
+  .toolbar select{width:100%}
+  .dash-head{align-items:start;flex-direction:column}
+  .stats-row{width:100%;justify-content:space-between}
+  .vehicle-img{height:220px}
+}

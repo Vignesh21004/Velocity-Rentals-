@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velocity Rentals</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="topbar" id="topbar">
+    <div class="brand-mini">VELOCITY RENTALS</div>
+    <div class="top-actions">
+      <span id="welcomeUser"></span>
+      <button class="ghost-btn" id="logoutBtn" hidden>LOGOUT</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- LANDING -->
+    <section class="screen landing" id="landingScreen">
+      <div class="hero">
+        <div class="eyebrow">CARS · BIKES · HEAVY TRANSPORT</div>
+        <h1>VELOCITY <span>RENTALS</span></h1>
+        <p>PRECISION MOBILITY. SIMPLE RENTALS.</p>
+        <div class="hero-actions">
+          <button class="neon-btn" data-screen="adminLoginScreen">ADMIN PORTAL</button>
+          <button class="outline-btn" data-screen="userLoginScreen">CLIENT PORTAL</button>
+        </div>
+      </div>
+      <div class="scroll-note">VEHICLE RENTAL MANAGEMENT SYSTEM</div>
+    </section>
+
+    <!-- ADMIN LOGIN -->
+    <section class="screen auth-screen hidden" id="adminLoginScreen">
+      <div class="auth-card">
+        <div class="card-kicker">SECURE ADMIN ACCESS</div>
+        <h2>ADMIN LOGIN</h2>
+        <form id="adminLoginForm">
+          <label>USERNAME<input id="adminUser" required placeholder="Username"></label>
+          <label>PASSWORD<input id="adminPass" required type="password" placeholder="Password"></label>
+          <button class="neon-btn wide" type="submit">LOGIN</button>
+          <div class="form-msg" id="adminMsg"></div>
+        </form>
+        <button class="text-btn backBtn" data-screen="landingScreen">BACK</button>
+        <p class="hint">Demo: <b>admin</b> / <b>admin123</b></p>
+      </div>
+    </section>
+
+    <!-- USER LOGIN -->
+    <section class="screen auth-screen hidden" id="userLoginScreen">
+      <div class="auth-card">
+        <div class="card-kicker">CLIENT ACCESS</div>
+        <h2>USER LOGIN</h2>
+        <form id="userLoginForm">
+          <label>PHONE NUMBER<input id="userPhone" required inputmode="tel" placeholder="Phone number"></label>
+          <label>PASSWORD<input id="userPass" required type="password" placeholder="Password"></label>
+          <button class="neon-btn wide" type="submit">LOGIN</button>
+          <div class="form-msg" id="userMsg"></div>
+        </form>
+        <button class="text-btn registerBtn">NEW USER? REGISTER NOW</button>
+        <button class="text-btn backBtn" data-screen="landingScreen">BACK</button>
+      </div>
+    </section>
+
+    <!-- USER REGISTER -->
+    <section class="screen auth-screen hidden" id="registerScreen">
+      <div class="auth-card">
+        <div class="card-kicker">CREATE CLIENT ACCOUNT</div>
+        <h2>REGISTER</h2>
+        <form id="registerForm">
+          <label>FULL NAME<input id="regName" required placeholder="Full name"></label>
+          <label>PHONE NUMBER<input id="regPhone" required inputmode="tel" placeholder="Phone number"></label>
+          <label>PASSWORD<input id="regPass" required type="password" minlength="4" placeholder="Password"></label>
+          <button class="neon-btn wide" type="submit">CREATE ACCOUNT</button>
+          <div class="form-msg" id="registerMsg"></div>
+        </form>
+        <button class="text-btn backBtn" data-screen="userLoginScreen">BACK TO LOGIN</button>
+      </div>
+    </section>
+
+    <!-- CLIENT DASHBOARD -->
+    <section class="screen dashboard hidden" id="clientDashboard">
+      <div class="dash-head">
+        <div>
+          <span class="small-label">HELLO,</span>
+          <h2 id="clientName">CLIENT</h2>
+        </div>
+        <div class="stats-row">
+          <div><strong id="availableCount">0</strong><span>AVAILABLE</span></div>
+          <div><strong id="bookingCount">0</strong><span>MY BOOKINGS</span></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-type="car">CARS</button>
+        <button class="tab" data-type="bike">BIKES</button>
+        <button class="tab" data-type="truck">TRUCKS</button>
+      </div>
+
+      <div class="toolbar">
+        <input id="searchInput" placeholder="Search vehicle, model or fuel...">
+        <select id="sortSelect">
+          <option value="featured">SORT: FEATURED</option>
+          <option value="low">PRICE: LOW TO HIGH</option>
+          <option value="high">PRICE: HIGH TO LOW</option>
+          <option value="name">NAME: A-Z</option>
+        </select>
+      </div>
+
+      <div class="vehicle-grid" id="vehicleGrid"></div>
+
+      <div class="panel history-panel">
+        <div class="panel-title">MY RENTAL HISTORY</div>
+        <div id="clientHistory" class="history-list"></div>
+      </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD -->
+    <section class="screen dashboard hidden" id="adminDashboard">
+      <div class="dash-head">
+        <div>
+          <span class="small-label">ADMIN</span>
+          <h2>FLEET CONTROL</h2>
+        </div>
+        <div class="admin-stat">
+          <strong id="adminFleetCount">0</strong>
+          <span>FLEET VEHICLES</span>
+        </div>
+      </div>
+
+      <div class="tabs admin-tabs">
+        <button class="tab active" data-admin-type="car">CARS</button>
+        <button class="tab" data-admin-type="bike">BIKES</button>
+        <button class="tab" data-admin-type="truck">TRUCKS</button>
+      </div>
+
+      <div class="admin-layout">
+        <div class="panel">
+          <div class="panel-title">VEHICLE INVENTORY</div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>MODEL</th><th>RATE</th><th>STATUS</th><th>ACTIONS</th></tr></thead>
+              <tbody id="adminTable"></tbody>
+            </table>
+          </div>
+          <button class="outline-btn wide" id="addVehicleBtn">+ ADD NEW VEHICLE</button>
+        </div>
+        <div class="panel">
+          <div class="panel-title">RENTAL ACTIVITY</div>
+          <div id="adminActivity" class="history-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- VEHICLE MODAL -->
+  <div class="modal hidden" id="vehicleModal">
+    <div class="modal-card vehicle-modal">
+      <button class="close-btn" id="closeVehicleModal">×</button>
+      <div class="modal-image-wrap">
+        <img id="modalImage" alt="Vehicle">
+        <div class="modal-price" id="modalPrice"></div>
+      </div>
+      <div class="modal-info">
+        <div class="card-kicker" id="modalType">CAR · PETROL</div>
+        <h2 id="modalTitle"></h2>
+        <div class="spec-grid" id="modalSpecs"></div>
+        <div class="booking-fields">
+          <label>PICK-UP<input type="date" id="pickupDate"></label>
+          <label>DROP-OFF<input type="date" id="dropoffDate"></label>
+        </div>
+        <div class="total-box">
+          <span>ESTIMATED TOTAL</span><strong id="bookingTotal">₹0</strong>
+        </div>
+        <button class="neon-btn wide" id="confirmBookingBtn">CONFIRM BOOKING</button>
+        <div class="form-msg" id="bookingMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD VEHICLE MODAL -->
+  <div class="modal hidden" id="addVehicleModal">
+    <div class="modal-card small-modal">
+      <button class="close-btn" id="closeAddModal">×</button>
+      <div class="card-kicker">FLEET MANAGEMENT</div>
+      <h2>ADD VEHICLE</h2>
+      <form id="addVehicleForm">
+        <label>MODEL<input id="newModel" required placeholder="Vehicle model"></label>
+        <div class="two-col">
+          <label>TYPE<select id="newType"><option value="car">Car</option><option value="bike">Bike</option><option value="truck">Truck</option></select></label>
+          <label>RATE / DAY<input id="newRate" required type="number" min="1" placeholder="250"></label>
+        </div>
+        <label>IMAGE URL<input id="newImage" placeholder="Optional image URL"></label>
+        <label>FUEL<input id="newFuel" placeholder="Petrol"></label>
+        <button class="neon-btn wide" type="submit">ADD TO INVENTORY</button>
+        <div class="form-msg" id="addMsg"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
